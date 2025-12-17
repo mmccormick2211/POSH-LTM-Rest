@@ -1,4 +1,5 @@
 ﻿Function New-F5Item {
+    [cmdletbinding(SupportsShouldProcess=$True)]
     param (
         [Parameter(Mandatory=$true)]
         [string]$Name,

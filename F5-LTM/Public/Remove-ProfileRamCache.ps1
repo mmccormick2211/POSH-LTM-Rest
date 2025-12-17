@@ -5,7 +5,7 @@
 .NOTES
     Example profile: "profile/http/ramcache"
 #>
-    [cmdletBinding()]
+    [cmdletbinding(SupportsShouldProcess=$True)]
     param(
         $F5Session=$Script:F5Session,
         [Parameter(Mandatory=$true)]$ProfileName

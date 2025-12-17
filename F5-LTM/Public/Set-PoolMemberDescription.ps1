@@ -3,7 +3,7 @@
 .SYNOPSIS
     Set the description value for the specified pool member
 #>
-    [cmdletBinding()]
+    [cmdletbinding(SupportsShouldProcess=$True)]
     param(
         $F5Session=$Script:F5Session,
 

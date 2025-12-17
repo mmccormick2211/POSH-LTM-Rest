@@ -1,7 +1,7 @@
 Function Get-VirtualServeriRuleCollection {
 <#
 .SYNOPSIS
-    Get-VirtualServeriRuleCollection is deprecated.  Please use Get-VirtualServer | Select-Object -ExpandProperty rules   
+    Get-VirtualServeriRuleCollection is deprecated.  Please use Get-VirtualServer | Select-Object -ExpandProperty rules
 #>
 
     param (
@@ -11,6 +11,9 @@ Function Get-VirtualServeriRuleCollection {
         [string[]]$Name,
         [Parameter(Mandatory=$false)]$Partition
     )
-    Write-Warning "Get-VirtualServeriRuleCollection is deprecated.  Please use Get-VirtualServer | Where-Object rules | Select-Object -ExpandProperty rules"
-    Get-VirtualServer -F5Session $F5Session -Name $Name -Partition $Partition | Select-Object -ExpandProperty rules -ErrorAction SilentlyContinue
+    process {
+
+        Write-Warning "Get-VirtualServeriRuleCollection is deprecated.  Please use Get-VirtualServer | Where-Object rules | Select-Object -ExpandProperty rules"
+        Get-VirtualServer -F5Session $F5Session -Name $Name -Partition $Partition | Select-Object -ExpandProperty rules -ErrorAction SilentlyContinue
+    }
 }

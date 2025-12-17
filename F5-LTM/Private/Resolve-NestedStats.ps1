@@ -5,12 +5,14 @@
     Specifically, instead of the data existing in an "entries" property directly underneath the parent JSON object, it is now enclosed in "nestedStats" property within a custom PS object whose name resembles a self-link with the member name repeated.
 
     To resolve this discrepancy, this function performs version-specific transformations to the JSON data and returns it in a standardized format with the "entries" property at the top.
+    
+    JN: It's unclear to me how the JSON parameter, cast as a string, can have a property called 'entries.'
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     param (
         $F5Session=$Script:F5Session,
 
-        [Parameter(Mandatory=$true)][string]$JSONData
+        [Parameter(Mandatory=$true)][string]$JSON
     )
     switch ($F5Session.LTMVersion.Major)
     {

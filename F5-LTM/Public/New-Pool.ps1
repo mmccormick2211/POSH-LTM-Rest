@@ -14,7 +14,7 @@ Function New-Pool {
     If you don't use route domains, leave that value blank.
 
 #>
-    [cmdletBinding()]
+    [cmdletbinding(SupportsShouldProcess=$True)]
     param (
         $F5Session=$Script:F5Session,
         [Alias('PoolName')]

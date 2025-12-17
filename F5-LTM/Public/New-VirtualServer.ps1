@@ -4,7 +4,8 @@ Function New-VirtualServer
       .SYNOPSIS
       Create a new virtual server
   #>
-  [cmdletbinding(SupportsShouldProcess = $True,DefaultParameterSetName="VlanEnabled")]
+  [cmdletbinding(SupportsShouldProcess=$True,DefaultParameterSetName="VlanEnabled")]
+
   param (
     $F5Session = $Script:F5Session
     ,
@@ -171,7 +172,7 @@ Function New-VirtualServer
       }
     }
     $JSONBody.profiles = $ProfileItems
-    
+
     #Build array of policy items
     $PolicyItems = @()
     ForEach ($PolicyName in $PolicyNames)

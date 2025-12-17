@@ -51,7 +51,7 @@ Function New-ProfileHttp {
     viaResponse               : Preserve
     xffAlternativeNames       : {}
 #>
-    [cmdletBinding()]
+    [cmdletbinding(SupportsShouldProcess=$True)]
     param (
         $F5Session=$Script:F5Session,
         [Alias('ProfileName')]
@@ -110,9 +110,9 @@ Function New-ProfileHttp {
             }
             Else {
                 #Start building the JSON for the action
-                if($Enforcement -eq $null ){$Enforcement = @{}}
+                if($null -eq $Enforcement){$Enforcement = @{}}
                 $JSONBody = @{name=$newitem.Name;partition=$newitem.Partition;acceptXff=$acceptXff;appService=$appService;basicAuthRealm=$basicAuthRealm;defaultsFrom="/Common/http";description=$description;encryptCookieSecret=$encryptCookieSecret;encryptCookies=$encryptCookies;fallbackHost=$fallbackHost;fallbackStatusCodes=$fallbackStatusCodes;headerErase=$headerErase;headerInsert=$headerInsert;insertXforwardedFor=$insertXforwardedFor;lwsSeparator=$lwsSeparator;lwsWidth=$lwsWidth;oneconnectTransformations=$oneconnectTransformations;tmPartition=$tmPartition;proxyType=$proxyType;redirectRewrite=$redirectRewrite;requestChunking=$requestChunking;responseChunking=$responseChunking;responseHeadersPermitted=$responseHeadersPermitted;serverAgentName=$serverAgentName;viaHostName=$viaHostName;viaRequest=$viaRequest;viaResponse=$viaResponse;xffAlternativeNames=$xffAlternativeNames;Enforcement=$Enforcement}
-                ($JSONBody.GetEnumerator() | ? Value -eq "" ).name | % {$JSONBody.Remove($_)}
+                ($JSONBody.GetEnumerator() | Where-Object Value -eq "" ).name | ForEach-Object {$JSONBody.Remove($_)}
                 $JSONBody = $JSONBody | ConvertTo-Json
                 Invoke-F5RestMethod -Method POST -Uri "$URI" -F5Session $F5Session -Body $JSONBody -ContentType 'application/json' -ErrorMessage ("Failed to create the $($newitem.FullPath) profile.") -AsBoolean
 				Write-Verbose "If viaRequest or viaResponse is set to 'append,' then a value for viaHostName is required."

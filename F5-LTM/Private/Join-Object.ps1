@@ -30,8 +30,7 @@
 
 		[Parameter(Mandatory=$false)]
 		[ValidateSet('INNER','LEFT','FULL','RIGHT')]
-		[string] $Join='INNER',
-		[switch] $Force
+		[string] $Join='INNER'
 	)
 	begin {
 		if ($null -eq $LeftProperty) {
