@@ -6,7 +6,7 @@
 .EXAMPLE
     New-Node -Address 192.168.1.42
 #>
-    [cmdletbinding(SupportsShouldProcess=$True)]
+    [cmdletbinding()]
     param (
         $F5Session=$Script:F5Session,
 

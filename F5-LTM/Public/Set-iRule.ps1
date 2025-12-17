@@ -21,7 +21,7 @@
         .EXAMPLE
             Set-iRule -name 'NameThatMakesSense' -apiAnonymous $ObjectofStrings
     #>
-    [cmdletbinding(SupportsShouldProcess=$True)]
+    [cmdletbinding()]
     param (
         $F5Session = $Script:F5Session,
         [Parameter(Mandatory)]

@@ -5,7 +5,7 @@ Function Add-iRuleToVirtualServer {
 .NOTES
     This function defaults to the /Common partition
 #>
-    [cmdletbinding(SupportsShouldProcess=$True)]
+    [cmdletbinding()]
     param(
         $F5Session=$Script:F5Session,
 

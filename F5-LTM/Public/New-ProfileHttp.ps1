@@ -51,7 +51,7 @@ Function New-ProfileHttp {
     viaResponse               : Preserve
     xffAlternativeNames       : {}
 #>
-    [cmdletbinding(SupportsShouldProcess=$True)]
+    [cmdletbinding()]
     param (
         $F5Session=$Script:F5Session,
         [Alias('ProfileName')]

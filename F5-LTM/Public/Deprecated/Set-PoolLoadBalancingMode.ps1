@@ -3,7 +3,7 @@
 .SYNOPSIS
     Set-PoolLoadBalancingMode is deprecated.  Please use Set-Pool
 #>
-    [cmdletbinding(SupportsShouldProcess=$True)]
+    [cmdletbinding()]
     param(
         $F5Session=$Script:F5Session,
 

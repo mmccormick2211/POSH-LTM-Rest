@@ -10,7 +10,7 @@
 
 	New-HealthMonitor -F5Session $F5Session -Name "/Common/test123" -Type http -Receive '^HTTP.1.[0-2]\s([2|3]0[0-9])' -Send 'HEAD /host.ashx?isup HTTP/1.1\r\nHost: Test123.dyn-intl.com\r\nConnection: close\r\n\r\n' -Destination '10.1.1.1.80' -Description 'My Test Monitor'
 #>
-    [cmdletbinding(SupportsShouldProcess=$True)]
+    [cmdletbinding()]
     param (
         $F5Session=$Script:F5Session,
 
